@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <style>
+        /* General styling for the error page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light grey background */
+            color: #333; /* Dark text for good contrast */
+            text-align: center;
+            padding: 50px;
+			background-image: url(https://img.freepik.com/free-vector/group-pets_1308-53406.jpg);
+			            background-size: cover;
+			            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: navy; /* Navy color for the heading */
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #333; /* Dark text color for better readability */
+        }
+
+        .error-container {
+            background-color: #d3d3d3; /* Light grey background for the error box */
+            border: 1px solid navy; /* Navy border */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: navy; /* Navy button background */
+            color: white; /* White text for the button */
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .back-link:hover {
+            background-color: #004080; /* Darker navy when hovered */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <h1>Error</h1>
+        <p th:text="${error}">An error occurred while fetching the pet details. Please try again later.</p>
+        <a href="/pet" class="back-link">Back to Pet List</a>
+    </div>
+
+</body>
+</html>

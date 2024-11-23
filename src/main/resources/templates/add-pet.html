@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Pet</title>
+	<style>
+	        /* General Page Styling */
+	        body {
+	            font-family: Arial, sans-serif; /* Clean, modern font */
+	            margin: 0;
+	            padding: 0;
+	            background-color: #f0f0f0; /* Light grey background for the page */
+	            display: flex;
+	            justify-content: center; /* Centers the card horizontally */
+	            align-items: center; /* Centers the card vertically */
+	            height: 100vh; /* Full viewport height */
+				background-image: url(https://img.freepik.com/free-vector/group-pets_1308-53406.jpg);
+				            background-size: cover;
+				            background-attachment: fixed;
+	        }
+
+	        /* Card Container */
+	        .form-card {
+	            background-color: #d3d3d3; /* Light grey background for the card */
+	            border: 2px solid navy; /* Navy border */
+	            border-radius: 10px; /* Rounded corners */
+	            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+	            padding: 20px;
+	            width: 400px; /* Fixed width for consistent design */
+	        }
+
+	        /* Heading Styling */
+	        .form-card h1 {
+	            text-align: center;
+	            color: navy; /* Navy text color */
+	            margin-bottom: 20px;
+	            font-size: 2rem;
+	        }
+
+	        /* Label Styling */
+	        .form-card label {
+	            display: block;
+	            font-weight: bold;
+	            color: navy; /* Navy color for labels */
+	            margin-bottom: 5px;
+	        }
+
+	        /* Input Fields */
+	        .form-card input[type="text"],
+	        .form-card input[type="number"] {
+	            width: 100%; /* Full width of the card */
+	            padding: 8px;
+	            margin-bottom: 15px;
+	            border: 1px solid #ccc; /* Light border for inputs */
+	            border-radius: 5px; /* Rounded corners */
+	            box-sizing: border-box;
+	            font-size: 1rem;
+	        }
+
+	        /* Submit Button */
+	        .form-card button {
+	            width: 100%; /* Full width button */
+	            padding: 10px;
+	            background-color: navy; /* Navy background */
+	            color: white; /* White text */
+	            border: none;
+	            border-radius: 5px; /* Rounded corners */
+	            font-size: 1rem;
+	            cursor: pointer;
+	            transition: background-color 0.3s ease;
+	        }
+
+	        /* Button Hover Effect */
+	        .form-card button:hover {
+	            background-color: #004080; /* Darker navy on hover */
+	        }
+	    </style>
+</head>
+<body>
+	
+<div class="form-card">
+    <h1>Add New Pet</h1>
+
+    <form th:action="@{/pets/new}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Enter pet name" required />
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" placeholder="Enter pet age" required />
+
+        <label for="breed">Breed:</label>
+        <input type="text" name="breed" placeholder="Enter pet breed" required />
+
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" placeholder="Enter price" required />
+
+        <label for="description">Description:</label>
+        <textarea name="description" placeholder="Enter description" required></textarea>
+
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" name="imageUrl" placeholder="Enter image URL" required />
+        
+        <label for="petCategoryId">Category Id:</label>
+        <input type="text" name="petCategoryId" th:value="${pet.petCategoryId}" />
+
+        <button type="submit">Add Pet</button>
+    </form>
+
+    <a href="/pets">Back to Pet List</a>
+</div>
+
+</body>
+</html>
