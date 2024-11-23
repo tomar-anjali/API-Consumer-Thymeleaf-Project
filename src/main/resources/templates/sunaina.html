@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunaina's Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		*{
+				    padding: 0;
+				    margin: 0;
+				    box-sizing: border-box;
+					text-align: center;
+				    border: none;
+				    outline: none;
+				    cursor: pointer;
+				    text-decoration: none;
+				}
+        /* Custom styling for the card */
+        body {
+            background-color: #f0f8ff; /* Light background color for the page */
+            font-family: Arial, sans-serif;
+        }
+
+        .card-custom {
+            background-color: rgba(0, 128, 128, 0.7); /* Teal with opacity */
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: rgba(0, 128, 128, 0.8); /* Darker teal */
+            border-bottom: 2px solid #006f6f;
+        }
+
+        .btn-custom {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #006f6f; /* Darker teal on hover */
+            color: white;
+        }
+
+        .card-body h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card-body p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Card with teal accent -->
+        <div class="card card-custom">
+            <div class="card-header text-center">
+                <h2>List of APIs</h2>
+            </div>
+            <div class="card-body text-center">
+                <h1>Grooming Services API</h1>
+                <p>Click below to get the list of grooming services</p>
+                <!-- Link to other page -->
+                <a href="#" th:href="@{http://10.10.60.135:905/services}" class="btn btn-custom">Get All Grooming Services</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

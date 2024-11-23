@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vaccinations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f2f1; /* Light teal background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Card container */
+        .container {
+            margin-top: 30px;
+        }
+
+        /* Card styles */
+        .card-custom {
+            border-radius: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .card-header {
+            background-color: #00796b; /* Teal background */
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #00796b; /* Teal border */
+        }
+
+        th {
+            background-color: #004d40; /* Dark teal background */
+            color: white;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #b2dfdb; /* Light teal background for odd rows */
+        }
+
+        /* Button styles */
+        .btn-custom {
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background-color: #00796b; /* Teal primary button */
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #004d40; /* Dark teal on hover */
+        }
+
+        .btn-success {
+            background-color: #4db6ac; /* Light teal success button */
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #00796b; /* Dark teal on hover */
+        }
+
+        .btn-edit {
+            background-color: #80cbc4; /* Slightly lighter teal for edit button */
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #00796b; /* Dark teal on hover */
+        }
+
+        .btn-delete {
+            background-color: #80deea; /* Light teal for delete button */
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #00796b; /* Dark teal on hover */
+        }
+
+        /* Alert for no data */
+        .alert {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Action container styles */
+        .action-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Search input field styles */
+        input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #00796b; /* Teal border for search */
+            width: 250px;
+        }
+
+        .marquee {
+            font-style: italic;
+            color: #00796b; /* Teal color for marquee text */
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card card-custom">
+            <div class="card-header">
+                <h2>Vaccinations</h2>
+            </div>
+            <div class="card-body">
+                <div class="marquee">
+                    <marquee>Latest vaccination information and updates available here!</marquee>
+                </div>
+
+                <div th:if="${error}">
+                    <p th:text="${error}" class="alert alert-danger"></p>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="action-container">
+                    <form action="/searchVaccination" method="get" style="display: inline;">
+                        <input type="text" name="id" placeholder="Enter Vaccination ID" required>
+                        <button type="submit" class="btn btn-primary btn-custom">Search</button>
+                    </form>
+                    <a href="/insertVaccination" class="btn btn-success btn-custom">Insert Data</a>
+                </div>
+
+                <!-- Vaccination Data Table -->
+                <table th:if="${vaccinations}" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Edit</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="vaccination : ${vaccinations}">
+                            <td th:text="${vaccination['vaccinationId']}"></td>
+                            <td th:text="${vaccination['name']}"></td>
+                            <td th:text="${vaccination['description']}"></td>
+                            <td th:text="${vaccination['price']}"></td>
+                            <td>
+                                <a th:href="@{/editVaccination/{id}(id=${vaccination.vaccinationId})}" class="btn btn-edit btn-custom">Edit</a>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-delete btn-custom" onclick="removeRow(this)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- If No Vaccinations Available -->
+                <div th:if="${vaccinations == null or vaccinations.isEmpty()}" class="alert alert-warning">
+                    <p>No vaccinations available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript function to remove a row
+        function removeRow(button) {
+            const row = button.parentElement.parentElement;
+            row.parentElement.removeChild(row);
+        }
+    </script>
+</body>
+</html>

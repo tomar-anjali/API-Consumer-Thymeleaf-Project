@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index/Home Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		*{
+		    padding: 0;
+		    margin: 0;
+		    box-sizing: border-box;
+			text-align: center;
+		    border: none;
+		    outline: none;
+		    cursor: pointer;
+		    text-decoration: none;
+		}
+        body {
+            background: url('https://images.app.goo.gl/boRAz29GysjFRpLg8') no-repeat center center fixed;
+            background-size: cover; /* Ensure the image covers the entire background */
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+			width:100%;
+            margin: 0;
+        }
+
+        .container {
+			height: 100vh;
+			    width: 100%;
+			    /*margin: 2rem auto;*/
+			    background-color: #66b2b2	;
+			
+         /*   text-align: center;
+            padding: 2rem 1.8rem;
+            /*border-radius: 0.8rem;
+           /* background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, 0.2); /* Subtle shadow for content */
+         /*   width: 100%;
+            position: relative; /* For button positioning */
+        }
+		.box{
+		    height: 100%;
+		    width: 100%;
+		    /*display: flex;*/
+		    justify-content: center;
+		    align-items: center;
+		    background-color: white;
+		    border: 1px solid teal;
+		    border-radius: 100% 2%;
+		    animation: ani 30s infinite;
+		}
+		
+
+		@keyframes ani {
+		    50%{
+		        border-radius: 2% 100%;
+		    }
+		}
+
+
+        h1 {
+            color: teal; /* Maroon heading */
+            font-weight: bold;
+            font-size: 3.2rem;
+            margin:2.5rem 0 1.5rem 0;
+			text-align: center;
+        }
+
+        p {
+            color: #6c757d; /* Soft grey for welcome message */
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .name-box {
+            display:block;
+            text-align: center;
+            color: teal;
+            /*background-color: teal; /* Maroon background */
+            font-size: 1.5rem;
+            margin: 1rem auto;
+            /*padding: 0.8rem 1rem;
+            border-radius: 0.3rem; /* Smooth corners */
+            /*box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.1); /* Button shadow */
+            transition: all 0.3s ease-in-out;
+            width: 30%; /* Standard size for name boxes */
+        }
+
+        .name-box:hover {
+           /* background-color: #66b2b2; /* Darker maroon on hover */
+            transform: translateY(-2px); /* Lift effect */
+            box-shadow: 0 6px 12px #66b2b2; /* Enhanced shadow on hover */
+			color:teal;
+        }
+        .button {
+			    display: block;
+			    margin: 0.8rem auto;
+			    padding: 0.3rem 0.5rem;
+			    outline: none;
+            position: absolute;
+            bottom: 2.5rem;
+            left: 39rem;
+            padding: 0.8rem 2rem;
+            background-color: teal; /* Light maroon button */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            border-radius: 1.5rem 0.3rem; /* Rounded button */
+            box-shadow: 0 0.25rem 0.8rem rgba(0, 0, 0, 0.1); /* Button shadow */
+            transition: all 0.3s ease-in-out;
+        }
+
+		.marquee {
+		          font-style: italic;
+		          color: #00796b; /* Teal color for marquee text */
+		          margin-bottom: 15px;
+		 }
+        .button:hover {
+            background-color: #66b2b2	; /* Darker light maroon on hover */
+            transform: translateY(-2px); /* Lift effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+			color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="box">
+        <h1>PETSHOP</h1>
+		<div class="marquee">
+		     <marquee>Welcome to the ultimate destination for all your pet needs!</marquee>
+		 </div>
+		
+        <!-- Name Boxes -->
+        <a href="#" th:href="@{/akanksha}" class="name-box">Akanksha</a>
+        <a href="#" th:href="@{/anjali}" class="name-box">Anjali Singh</a>
+        <a href="#" th:href="@{/impana}" class="name-box">Impana D</a>
+        <a href="#" th:href="@{/maheshwari}" class="name-box">Maheshwari K</a>
+        <a href="#" th:href="@{/sunaina}" class="name-box">Sunaina Sadare</a>
+        <!-- Button in top-right corner -->
+        <a href="#" th:href="@{http://localhost:8090/swagger-ui/index.html}" class="button">See APIs</a>
+    </div>
+	</div>
+</body>
+</html>

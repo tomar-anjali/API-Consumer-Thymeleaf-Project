@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Vaccination</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1500x900/ffcccb/ffffff?text=Pets+Image');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Card container */
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Slight white background for card */
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+        }
+
+        /* Title */
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+            color: #00796b;
+        }
+
+        input[type="text"], input[type="checkbox"] {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #00796b;
+            width: 100%; /* Make inputs fill the form width */
+        }
+
+        input[type="checkbox"] {
+            width: auto; /* Make checkbox size natural */
+        }
+
+        /* Button styling */
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: auto;
+            align-self: center; /* Center the button */
+			margin-left:9rem;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        /* Error message */
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .btn-secondary {
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            color: #00796b;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #e0f2f1;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #b2dfdb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Edit Vaccination</h1>
+
+        <div th:if="${error}" class="error">
+            <p th:text="${error}"></p>
+        </div>
+
+        <form th:action="@{/updateVaccination/{id}(id=${vaccination.vaccinationId})}" method="post">
+            <input type="hidden" th:value="${vaccination['vaccinationId']}" name="id"/>
+
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" th:value="${vaccination['name']}"/>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" th:value="${vaccination['description']}"/>
+            </div>
+
+            <div>
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" th:value="${vaccination['price']}"/>
+            </div>
+
+            <div>
+                <label for="available">Available:</label>
+                <input type="checkbox" id="available" name="available" th:checked="${vaccination['available']}"/>
+            </div>
+
+            <a href="#" th:href="@{/vaccinations}" class="btn-secondary">Go Back to Vaccination</a>
+
+            <div>
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Impana's Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		*{
+				    padding: 0;
+				    margin: 0;
+				    box-sizing: border-box;
+					text-align: center;
+				    border: none;
+				    outline: none;
+				    cursor: pointer;
+				    text-decoration: none;
+				}
+        /* Body background */
+       /*
+		 body {
+            background-image: url(https://images.pexels.com/photos/618335/pexels-photo-618335.jpeg); /* Pet-related image */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+	*/
+        /* Custom card style */
+        .card-custom {
+            background-color: rgba(0, 128, 128, 0.7); /* Teal with opacity */
+            border-radius: 15px;
+            color: white;
+        }
+
+        .card-custom .card-header {
+            background-color: rgba(0, 128, 128, 0.8); /* Darker teal */
+        }
+
+        .btn-custom {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #006f6f; /* Darker teal on hover */
+            color: white;
+        }
+
+        .card-body h1 {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Card with teal accent -->
+        <div class="card card-custom">
+            <div class="card-header text-center">
+                <h2>List of APIs</h2>
+            </div>
+            <div class="card-body text-center">
+                <h1>Pet Categories API</h1>
+                <p>Click below to get the list of pet categories</p>
+                <!-- Link to other page -->
+                <a href="#" th:href="@{http://10.10.60.242:9053/categories}" class="btn btn-custom">Get All Pet Categories</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
