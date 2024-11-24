@@ -21,7 +21,7 @@ import com.spring.frontend.dto.PetDto;
 @Controller
 public class PetController {
 
-    private final String BASE_URL = "http://localhost:8099/pets"; // Base URL of your previous project
+    private final String BASE_URL = "http://localhost:8091/pets"; // Base URL of your previous project
 
     @Autowired
     private RestTemplate restTemplate;

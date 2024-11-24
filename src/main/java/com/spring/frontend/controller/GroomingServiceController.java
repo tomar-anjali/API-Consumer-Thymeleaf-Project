@@ -25,7 +25,7 @@ public class GroomingServiceController {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String BASE_URL = "http://localhost:8090";
+    private final String BASE_URL = "http://localhost:8091";
 
     @GetMapping
     public String getAllServices(@RequestParam(value = "search", required = false) String search, Model model) {

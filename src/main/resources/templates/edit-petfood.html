@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Edit Pet Category</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="hidden"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Edit Pet Category</h1>
+    <form th:action="@{/petFood/update/{foodId}(foodId=${petFood['foodId']})}" method="get">
+        <input type="hidden" name="foodId" th:value="${petFood['foodId']}" required />
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" th:value="${petFood['name']}" required />
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand:</label>
+            <input type="text" name="brand" th:value="${petFood['brand']}" required />
+        </div>
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <input type="text" name="type" th:value="${petFood['type']}" required />
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="text" name="quantity" th:value="${petFood['quantity']}" required />
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" name="price" th:value="${petFood['price']}" required />
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="/getAllFood">Back to Pet Foods</a>
+</body>
+
+</html>

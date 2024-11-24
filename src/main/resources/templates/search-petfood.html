@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Search Pet Food</title>
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 90%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        td {
+            color: #333;
+        }
+
+        /* Links and Buttons */
+        a, button {
+            text-decoration: none;
+            color: #007BFF;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        a:hover, button:hover {
+            color: #0056b3;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Navigation Links */
+        a {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+	<script>
+				// JavaScript function to remove a row
+				function removeRow(button) {
+					const row = button.parentElement.parentElement;
+					row.parentElement.removeChild(row);
+				}
+			</script>
+</head>
+
+<body>
+    <h1>Search Pet Food</h1>
+
+    <!-- Search Results Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="petFood : ${petFoods}">
+                <td th:text="${petFood['foodId']}"></td>
+                <td th:text="${petFood['name']}"></td>
+                <td th:text="${petFood['brand']}"></td>
+                <td th:text="${petFood['type']}"></td>
+                <td th:text="${petFood['quantity']}"></td>
+                <td th:text="${petFood['price']}"></td>
+                <td>
+                  <a th:href="@{/petFood/edit/{foodId}(foodId=${petFood['foodId']})}">Edit</a>
+                   	<button type="button" class="btn btn-delete" onclick="removeRow(this)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/getAllFood">Back to Pet Foods</a>
+</body>
+
+</html>
