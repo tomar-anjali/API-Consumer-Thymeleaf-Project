@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Grooming Services</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgb(255, 255, 255) 0%, #fad0c4 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, rgba(128, 0, 128, 1), rgba(255, 128, 192, 1), rgba(255, 204, 255, 1));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: rgb(128, 0, 128);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        a:hover {
+            background-color: rgb(205, 177, 202);
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgb(128, 0, 128);
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .btn-group button {
+            background-color: rgb(128, 0, 128);
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-group button:hover {
+            background-color: rgb(255, 128, 192);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Grooming Services</h1>
+    <a th:href="@{/services/add}">Add New Service</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.serviceId}"></td>
+                <td th:text="${service.name}"></td>
+                <td th:text="${service.description}"></td>
+                <td th:text="${service.price}"></td>
+                <td th:text="${service.available ? 'Yes' : 'No'}"></td>
+                <td class="btn-group">
+                    <button th:onclick="'location.href=\'/services/edit/' + ${service.serviceId} + '\';'">Edit</button>
+                    <button th:onclick="'location.href=\'/services/delete/' + ${service.serviceId} + '\';'">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
